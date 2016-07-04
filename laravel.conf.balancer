@@ -1,15 +1,10 @@
 server {
-    listen 80 default_server;
-    listen [::]:80 default_server ipv6only=on;
-    server_name *.quantimo.do localhost;
-    return 301 https://$host$request_uri;
+  listen 81;
+  return 301 https://$host$request_uri;
 }
 
 server {
-    listen 443 ssl;
-
-    ssl_certificate /var/www/configs/ssl/quantimo.do-combined.crt;
-    ssl_certificate_key /var/www/configs/ssl/quantimo.do.key;
+    listen 80;
 
     root /var/www/public.built;
     index index.php index.html index.htm api-docs.json;
